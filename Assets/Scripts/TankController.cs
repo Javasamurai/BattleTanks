@@ -16,6 +16,7 @@ public class TankController
         this.tankView.SetTankController(this);
         this.tankModel.SetTankController(this);
         rb = this.tankView.GetRigidbody();
+        this.tankView.SetMaterial(tankModel.material);
     }
 
     public void Move(float movement, float speed)
