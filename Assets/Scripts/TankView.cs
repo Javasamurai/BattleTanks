@@ -11,7 +11,14 @@ public class TankView : MonoBehaviour
     private float rotation;
     
     public Rigidbody rb;
-    
+
+    private void Start()
+    {
+        Camera camera = Camera.main;
+        camera.transform.SetParent(transform);
+        camera.transform.localPosition = new Vector3(0, 4, -10);
+    }
+
     public Rigidbody GetRigidbody()
     {
         return rb;
@@ -28,11 +35,11 @@ public class TankView : MonoBehaviour
         rotation = Input.GetAxis("Horizontal");
         if (movement != 0)
         {
-            tankController.Move(movement, 30);
+            tankController.Move(movement, tankController.GetTankModel().movement);
         }
         if (rotation != 0)
         {
-            tankController.Rotate(rotation, 20);
+            tankController.Rotate(rotation, tankController.GetTankModel().rotation);
         }
     }
 }
